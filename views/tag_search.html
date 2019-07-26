@@ -1,0 +1,58 @@
+{{ extend './_layouts/home.html' }}
+
+{{ block 'title' }}博客 - 标签搜索{{ /block }}
+
+{{block 'head'}}
+<link rel="stylesheet" href="/public/css/home.css">
+{{/block}}
+
+{{block 'body'}}
+<section class="container">
+  {{ if blogs }}
+  <ul class="media-list">
+    {{ each blogs blog }}
+    <li class="media">
+      <div class="media-body">
+        <h4 class="media-heading blog-title"><span class="myblog-time">{{ blog.time }} </span><a href="/blog/{{ blog._id }}">{{ blog.title }}</a></h4>
+      </div>
+    </li>
+    {{ /each }}
+  </ul>
+  {{ /if }}
+
+  {{ if totalPage}}
+  <nav aria-label="Page navigation">
+    <ul class="pagination">
+      <li>
+        <a href="/tags/search?page={{ curPage - 1 }}&tag={{ keyword }}" aria-label="Previous" id="prev_page">
+        <span aria-hidden="true">上一页</span>
+      </a>
+      </li>
+      <li><a>共 <span id="curPage">{{ curPage }}</span> / <span id="totalPage">{{ totalPage }}</span> 页</a></li>
+      <li>
+        <a href="/tags/search?page={{ curPage + 1 }}&tag={{ keyword }}" aria-label="Next" id="next_page">
+        <span aria-hidden="true">下一页</span>
+      </a>
+      </li>
+    </ul>
+  </nav>
+  {{ /if }}
+</section>
+{{/block}}
+
+{{ block 'script' }}
+<script>
+  $('#prev_page').click((e) => {
+    if ($('#curPage').text() === '1') {
+      e.preventDefault()
+      alert('已经是第一页了')
+    }
+  })
+  $('#next_page').click((e) => {
+    if ($('#curPage').text() === $('#totalPage').text()) {
+      e.preventDefault()
+      alert('已经是最后一页了')
+    }
+  })
+</script>
+{{ /block }}

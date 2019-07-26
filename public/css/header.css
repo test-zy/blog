@@ -1,0 +1,28 @@
+.search-input {
+	width: 100px;
+	height: 48px;
+	font-size: 20px;
+}
+
+.login-btn,
+.register-btn {
+	margin-top: 15px;
+	margin-right: 20px;
+}
+.top-nav-user {
+	height: 64px;
+	font-size: 18px;
+}
+.top-nav-user > li {
+	height: 100%;
+}
+.top-nav-user a {
+	color: #337ab7 !important;
+	line-height: 64px !important;
+	padding: 0 15px !important;
+}
+
+.avatar_home {
+	width: 24px; height: 24px;
+	border-radius: 50%
+}

@@ -1,0 +1,29 @@
+{{extend './_layouts/home.html'}}
+
+{{block 'title'}}{{'博客 - 修改'}}{{/block}}
+
+{{block 'body'}}
+<section class="container">
+  <div class="row">
+    <div class="col-md-5">
+      <form action="/blog/{{ data._id }}/edit" method="post">
+        <div class="form-group">
+          <label for="title">标题</label>
+          <input type="text" class="form-control" id="title" placeholder="Title" name="title" value="{{ data.title }}" onfocus=this.blur()>
+        </div>
+        <div class="form-group">
+          <label for="">标签</label>
+          <input type="text" class="form-control" placeholder="Tag1" name="tag" value="{{ data.tags[0] }}" onfocus=this.blur()>
+          <input type="text" class="form-control" placeholder="Tag2" name="tag" value="{{ data.tags[1] }}" onfocus=this.blur()>
+          <input type="text" class="form-control" placeholder="Tag3" name="tag" value="{{ data.tags[2] }}" onfocus=this.blur()>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">内容</label>
+          <textarea class="form-control" rows="3" name="content">{{ data.content }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-default">发表</button>
+      </form>
+    </div>
+  </div>
+</section>
+{{/block}}

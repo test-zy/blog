@@ -1,0 +1,72 @@
+{{extend './_layouts/home.html'}}
+
+{{block 'title'}}{{'多人博客 - 首页'}}{{/block}}
+
+{{block 'head'}}
+<link rel="stylesheet" href="/public/css/markdown-github.css">
+<style>
+  .panel .panel-heading .action i {
+    margin-right: 10px;
+  }
+  .blog-content {
+    padding: 10px 0;
+  }
+</style>
+{{/block}}
+
+{{block 'body'}}
+<section class="container">
+  <div class="row">
+    <div class="">
+      <article class="markdown-body">
+      <h2>{{ blog.title }}</h2>
+      <p>作者：<a href="/userblog?author={{ blog.author }}">{{ blog.author }}</a> | 日期：{{ blog.time }} | 标签： {{ each blog.tags }} <a href="/tags/search?tag={{ $value }}">{{ $value }}</a>{{ /each }}</p>
+      <p class="blog-content">{{ blog.content }}</p>
+      <p>阅读：{{ blog.pageviews }} | 评论：{{ blog.reply.replyList.length }}</p>
+    </article>
+
+    {{ if user === blog.author }}
+    <a href="/blog/{{ blog._id }}/edit">编辑</a>
+    <a href="/blog/{{ blog._id }}/delete" id="delete">删除</a>
+    {{ /if }}
+
+      {{ if blog.reply.replyList.length }}
+      {{ each blog.reply.replyList reply }}
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <span>{{ reply.author.username }}</span> 评论于  
+          <span>{{ reply.time }}</span>
+        </div>
+        <div class="panel-body">
+          {{ reply.content }}
+        </div>
+      {{ /each }}
+      {{ /if }}
+      </div>
+
+      <hr>
+
+      {{ if user }}
+      <form action="/blog/{{ blog._id }}/reply" method="post">
+        <div class="form-group">
+          <label for="exampleInputPassword1">添加回复</label>
+          <textarea class="form-control" name="content" id="" cols="10" rows="10"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">回复</button>
+      </form>
+      {{ /if }}
+    </div>
+  </div>
+</section>
+{{/block}}
+
+{{ block 'script' }}
+<script>
+  $('#delete').click((e) => {
+    const isDel = window.confirm('确认删除吗？')
+    if (!isDel) {
+      e.preventDefault()
+    }
+  })
+</script>
+{{ /block }}

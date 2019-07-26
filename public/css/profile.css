@@ -1,0 +1,9 @@
+input[hidden] {
+	display: none !important;
+}
+
+img.avatar {
+	position: relative;
+	cursor: pointer;
+}
+

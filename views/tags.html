@@ -1,0 +1,19 @@
+{{extend './_layouts/home.html'}}
+
+{{block 'title'}}{{'博客 - 标签'}}{{/block}}
+
+{{ block 'head' }}
+<link rel="stylesheet" href="/public/css/tags.css">
+{{ /block }}
+
+{{block 'body'}}
+<section class="container tags-container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      {{ each tags }}
+      <a href="/tags/search?tag={{$value}}">{{ $value }}</a>
+      {{ /each }}
+    </div>
+  </div>
+</section>
+{{/block}}

@@ -1,0 +1,67 @@
+{{extend './_layouts/home.html'}}
+
+{{ block 'head' }}
+<link rel="stylesheet" href="/public/css/profile.css">
+{{ /block }}
+
+{{block 'title'}}{{'多人博客 - 个人主页'}}{{/block}}
+
+{{block 'body'}}
+<section class="container">
+  <div class="col-md-5">
+    <form>
+      <div class="form-group">
+        <label for="exampleInputEmail1">用户名</label>
+        <h3 class="form-control-static">{{ user }}</p>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">介绍</label>
+        <p class="form-control-static">{{ userInfo.introduction }}</p>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">性别</label>
+        <p>{{ userInfo.gender }}</p>
+      </div>
+    </form>
+  </div>
+  <div class="col-md-2 profile-avatar">
+    <dl>
+      <dt>头像设置</dt>
+      <dd>
+        <form action="/profile/avatar" method="post" enctype="multipart/form-data" id="avatar_form">
+          <img class="avatar" width="150" height="150" src="{{ userInfo.avatar }}" alt="" id="avatar">
+          <input type="file" name="avatar" id="file_input" accept="image/*" hidden>
+          <div>
+            <button class="btn btn-default" type="submit">Upload new picture</button>
+          </div>
+        </form>
+      </dd>
+    </dl>
+  </div>
+</section>
+{{/block}}
+
+{{ block 'script' }}
+<script>
+  const file_input = document.querySelector('#file_input')
+  const avatar = document.querySelector('#avatar')
+  const avatar_form = document.querySelector('#avatar_form')
+
+  avatar.onclick = function () {
+    file_input.click()
+  }
+
+  file_input.onchange = function () {
+    avatar.src = URL.createObjectURL(this.files[0])
+  }
+
+  avatar_form.onsubmit = function (e) {
+    if (!file_input.files.length) {
+      e.preventDefault()
+      alert('未选择新头像')
+    }
+  }
+
+
+</script>
+{{ /block }}

@@ -1,0 +1,27 @@
+{
+  "name": "project-blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "art-template": "^4.13.2",
+    "blueimp-md5": "^2.10.0",
+    "body-parser": "^1.18.3",
+    "bootstrap": "^3.4.1",
+    "connect-mongo": "^3.0.0",
+    "express": "^4.16.4",
+    "express-art-template": "^1.0.1",
+    "express-session": "^1.15.6",
+    "jquery": "^3.3.1",
+    "moment": "^2.24.0",
+    "mongoose": "^5.4.17",
+    "multer": "^1.4.2",
+    "serve-favicon": "^2.5.0"
+  }
+}

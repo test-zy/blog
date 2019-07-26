@@ -1,0 +1,25 @@
+
+/* body */
+.media-body .blog-title {
+	font-size: 30px;
+}
+.media-body .blog-content {
+	font-size: 20px;
+	max-height: 90px;
+	line-height: 30px;
+	overflow: hidden;
+}
+.media-body .blog-info {
+	font-size: 18px;
+}
+.margin-top-15 {
+	margin-top: 15px;
+}
+
+.media-body {
+	border-bottom: 2px dashed #ccc;
+}
+
+.myblog-time {
+	font-size: 22px;
+}
